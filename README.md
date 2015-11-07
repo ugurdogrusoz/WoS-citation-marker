@@ -6,7 +6,7 @@ their references and marks citations to provided article list.
 More specifically,
 - it reads a file named **my-citations.txt** generated from Web of Science as described in Bilkent Provost Office's [related
 web page](http://w3.bilkent.edu.tr/bilkent/annual-faculty-survey/). This is a list of articles citing your publications.
-- it reads a file named **my-publications.txt** listing your publications for which citations are to be marked.
+- it reads a file named **my-publications.txt** listing your publications for which citations are to be marked. These are essentially lines from **my-citations.txt** corresponding to your publications (**no leading or trailing whitespace**).
 - it outputs a rich text file named **my-citations-marked.rtf**, which is the same as **my-citations.txt** except
     * lines containing citations to your publications are highlighted
     * lines not containing citations to your publications are removed
@@ -18,10 +18,10 @@ web page](http://w3.bilkent.edu.tr/bilkent/annual-faculty-survey/). This is a li
 but it should work with any Perl version 5 or later. We assume Padre was installed on a Windows machine.
 
 - Clone this project through Github. If not familiar with Github, you may download the following files manually to your local:
-    * the [script](https://github.com/ugurdogrusoz/WoS-citation-marker/blob/master/citation-marker.pl),
-    * sample [my-citations.txt](https://github.com/ugurdogrusoz/WoS-citation-marker/blob/master/my-citations.txt),
-    * sample [my-publications.txt](https://github.com/ugurdogrusoz/WoS-citation-marker/blob/master/my-publications.txt), and
-    * sample [my-citations-marked.rtf](https://github.com/ugurdogrusoz/WoS-citation-marker/blob/master/my-citations-marked.rtf).
+    * the [script](https://raw.githubusercontent.com/ugurdogrusoz/WoS-citation-marker/master/citation-marker.pl),
+    * sample [my-citations.txt](https://raw.githubusercontent.com/ugurdogrusoz/WoS-citation-marker/master/my-citations.txt),
+    * sample [my-publications.txt](https://raw.githubusercontent.com/ugurdogrusoz/WoS-citation-marker/master/my-publications.txt), and
+    * sample [my-citations-marked.rtf](https://raw.githubusercontent.com/ugurdogrusoz/WoS-citation-marker/master/my-citations-marked.rtf).
     
 - Modify the input files for your needs:
     * in the script, change the line **my $me = "Dogrusoz, U"** to replace the given name with yours (make sure it's formatted the same!),
