@@ -28,7 +28,7 @@
   
   # Write the header of the .rtf file
   print CITSMARKED "{\\rtf1\\ansi\\deff0\\fs20 {\\fonttbl {\\f0 Lucida Console;}}\n" .
-    "{\\colortbl;\\red255\\green255\\blue0;\\red0\\green255\\blue255;}\n";
+    "{\\colortbl;\\red255\\green255\\blue0;\\red0\\green255\\blue255;\\red255\\green0\\blue0;}\n";
 
   my @citLines;
   my @pubLines;
@@ -46,7 +46,8 @@
   my $articleCount = 0;
   my $citationCountOthers = 0;
   my $citationCountSelf = 0;
-  my $isSelf;
+  my $isSelf = 0;
+  my $containsCitation = 0;
   
   # Current line position can be 
   #     _AU     : prior to Author list
@@ -66,6 +67,7 @@
       $positionState = "_AU";
       # a new citation starts
       $articleCount++;
+      $containsCitation = 0;
     }
     elsif ($line =~ /^AU/) {
       $positionState = "AU";
@@ -81,11 +83,19 @@
       $line =~ s/CR/  /i;
     }
     elsif ($line =~ /^TC/) {
-      $positionState = "CR_"
+      $positionState = "CR_";
+      
+      if ($containsCitation == 0) {
+        my $warningMessage = "Warning: this article does not have a citation to any publication provided.";
+        print CITSMARKED "{\\highlight3 " . $warningMessage . "\\line}\n";
+        print $warningMessage . "\n";
+      }
     }
         
     if ($positionState eq "CR") {
       if (isMyPub($line, \@pubLines) == 1) {
+        $containsCitation = 1;
+        
         # find and output leading whitespace (not to be highlighted)
         $line =~ /^(\s*)/;
         print CITSMARKED $1;
@@ -144,7 +154,7 @@
     my $pub;
     
     foreach $pub (@pubLinesRef) {
-      if ($lineRef =~ /$pub/) {
+      if (index($lineRef, $pub) != -1) {
         return 1;
       }
     }
