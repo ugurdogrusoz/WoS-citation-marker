@@ -5,8 +5,8 @@ their references and marks citations to provided article list.
 
 More specifically,
 - it reads a file named **my-citations.txt** generated from Web of Science as described in Bilkent Provost Office's [related
-web page](http://w3.bilkent.edu.tr/bilkent/annual-faculty-survey/). 
-- it reads a file named **my-publications.txt** listing publications for which citations are to be marked.
+web page](http://w3.bilkent.edu.tr/bilkent/annual-faculty-survey/). This is a list of articles citing your publications.
+- it reads a file named **my-publications.txt** listing your publications for which citations are to be marked.
 - it outputs a rich text file named **my-citations-marked.rtf**, which is the same as **my-citations.txt** except
     * lines containing citations to your publications are highlighted
     * lines not containing citations to your publications are removed
@@ -24,11 +24,18 @@ but it should work with any Perl version 5 or later. We assume Padre was install
     * sample [my-citations-marked.rtf](https://github.com/ugurdogrusoz/WoS-citation-marker/blob/master/my-citations-marked.rtf).
     
 - Modify the input files for your needs:
-    * in the script, change the line **my $me = "Dogrusoz, U"** to replace the given name with yours,
+    * in the script, change the line **my $me = "Dogrusoz, U"** to replace the given name with yours (make sure it's formatted the same!),
     * in **my-publications.txt**, change the content to contain your articles as references (one reference per line as they
     in citations file). Notice that using just your name might lead to incorrect results if you do not have a unique name. 
     Listing the entire citation such as
-    *Dogrusoz U, 2013, IEEE T VIS COMPUT GR, V19, P953, DOI 10.1109/TVCG.2012.178* instead of simply *Dogrusoz U* is safer.
+    
+      *Dogrusoz U, 2013, IEEE T VIS COMPUT GR, V19, P953, DOI 10.1109/TVCG.2012.178* 
+      
+      instead of simply
+      
+      *Dogrusoz U*
+      
+      is safer. But note that sometimes the same article might be formatted differently in WoS!
     * replace the content of **my-citations.txt** to contain your citation list.
 
 - Open a command prompt window (click Start, then Run, and type **cmd**), and go to the directory containing the script. We
@@ -36,7 +43,7 @@ assume input and output files are in the same directory as the script.
 
 - Run the script by typing **perl citation-marker.pl**.
 
-- The file **my-citations-marked.rtf** contains the citation list marked as described using rich text.
+- The file **my-citations-marked.rtf** contains the citation list marked as described earlier using rich text.
 
 ## Terms
 
