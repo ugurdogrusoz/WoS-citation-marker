@@ -18,6 +18,9 @@
   
   # Person's name to whom citations will be marked (needed to determine self citations)
   my $me = "Dogrusoz, U";
+  
+  # Whether mark up will be for color (1) printing or not (0 for b&w)
+  my $markUpForColorPrinting = 1;
 
   # Input files
   open(CITS, "<my-citations.txt");
@@ -106,14 +109,31 @@
         # write citation with highlight mark up
         if ($isSelf == 0) {
           $citationCountOthers++;
-          print CITSMARKED "{\\highlight1 ";
+          
+          if ($markUpForColorPrinting) {
+            print CITSMARKED "{\\highlight1 ";
+          }
+          else {
+            print CITSMARKED "\\uldb ";
+          }
         }
         else {
           $citationCountSelf++;
-          print CITSMARKED "{\\highlight2 ";
+
+          if ($markUpForColorPrinting) {
+            print CITSMARKED "{\\highlight2 ";
+          }
+          else {
+            print CITSMARKED "\\ul ";
+          }
         }
           
-        print CITSMARKED $line . "\\line}\n";
+        if ($markUpForColorPrinting) {
+          print CITSMARKED $line . "\\line}\n";
+        }
+        else {
+          print CITSMARKED $line . "\\ul0\\line\n";
+        }
       }
     }
     else {
@@ -130,10 +150,43 @@
   
   # Write citation counts and file trailer
   print CITSMARKED "\\line\n" .
-    "Number of articles in citations file: " . $articleCount . "\\line\\line\n" .
-    "{\\highlight1 Number of citations by others}: \\b " . $citationCountOthers . "\\b0\\line\\line\n" .
-    "{\\highlight2 Number of self citations}: \\b " . $citationCountSelf . "\\b0\\line\n" .
-    "}";
+    "Number of articles in citations file: " . $articleCount . "\\line\\line\n";
+
+  if ($markUpForColorPrinting) {
+    print CITSMARKED "{\\highlight1 ";
+  }
+  else {
+    print CITSMARKED "\\uldb ";
+  }
+  
+  print CITSMARKED "Number of citations by others";
+  
+  if ($markUpForColorPrinting) {
+    print CITSMARKED "}";
+  }
+  else {
+    print CITSMARKED "\\ul0";
+  }
+  
+  print CITSMARKED ": \\b " . $citationCountOthers . "\\b0\\line\\line\n";
+  
+  if ($markUpForColorPrinting) {
+    print CITSMARKED "{\\highlight2 ";
+  }
+  else {
+    print CITSMARKED "\\ul ";
+  }
+  
+  print CITSMARKED "Number of self citations";
+  
+  if ($markUpForColorPrinting) {
+    print CITSMARKED "}";
+  }
+  else {
+    print CITSMARKED "\\ul0";
+  }
+  
+  print CITSMARKED ": \\b " . $citationCountSelf . "\\b0\\line\n" . "}";
 
   # Output stats to console as well
   print 
