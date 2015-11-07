@@ -84,25 +84,27 @@
       $positionState = "CR_"
     }
         
-    if ($positionState eq "CR" && isMyPub($line, \@pubLines) == 1) {
-      # find and output leading whitespace (not to be highlighted)
-      $line =~ /^(\s*)/;
-      print CITSMARKED $1;
+    if ($positionState eq "CR") {
+      if (isMyPub($line, \@pubLines) == 1) {
+        # find and output leading whitespace (not to be highlighted)
+        $line =~ /^(\s*)/;
+        print CITSMARKED $1;
+          
+        # trim leading whitespace
+        $line =~ s/^\s+//;
         
-      # trim leading whitespace
-      $line =~ s/^\s+//;
-      
-      # write citation with highlight mark up
-      if ($isSelf == 0) {
-        $citationCountOthers++;
-        print CITSMARKED "{\\highlight1 ";
+        # write citation with highlight mark up
+        if ($isSelf == 0) {
+          $citationCountOthers++;
+          print CITSMARKED "{\\highlight1 ";
+        }
+        else {
+          $citationCountSelf++;
+          print CITSMARKED "{\\highlight2 ";
+        }
+          
+        print CITSMARKED $line . "\\line}\n";
       }
-      else {
-        $citationCountSelf++;
-        print CITSMARKED "{\\highlight2 ";
-      }
-        
-      print CITSMARKED $line . "\\line}\n";
     }
     else {
       # not a citation or not my citation, write line as is
