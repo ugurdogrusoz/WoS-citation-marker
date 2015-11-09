@@ -10,7 +10,7 @@ web page](http://w3.bilkent.edu.tr/bilkent/annual-faculty-survey/). This is a li
 - it outputs a rich text file named **my-citations-marked.rtf**, which is the same as **my-citations.txt** except
     * lines containing citations to your publications are highlighted
     * lines not containing citations to your publications are removed
-    * extra mark up text to make text file a rich text file (citatation by others in *yellow*, self in *cyan*)
+    * extra mark up text to make text file a rich text file; citatation by others in *yellow* (*double underline*), self in *cyan* (*underline*) for color (black and white) printing.
 
 ## Step by Step Instructions
 
@@ -24,7 +24,8 @@ but it should work with any Perl version 5 or later. We assume Padre was install
     * sample [my-citations-marked.rtf](https://raw.githubusercontent.com/ugurdogrusoz/WoS-citation-marker/master/my-citations-marked.rtf).
     
 - Modify the input files for your needs:
-    * in the script, change the line **my $me = "Dogrusoz, U"** to replace the given name with yours (make sure it's formatted the same!),
+    * in the script, change the line **my $me = "Dogrusoz, U"**; replace the given name with yours (make sure it's formatted the same!),
+    * in the script, for the line **my $markUpForColorPrinting = 1**, change 1 to 0 if the marked up document will be printed in black and white,
     * in **my-publications.txt**, change the content to contain your articles as references (one reference per line as they
     in citations file). Notice that using just your name might lead to incorrect results if you do not have a unique name. 
     Listing the entire citation such as
@@ -35,8 +36,8 @@ but it should work with any Perl version 5 or later. We assume Padre was install
       
       *Dogrusoz U*
       
-      is safer. But note that sometimes the same article might be formatted differently in WoS!
-    * replace the content of **my-citations.txt** to contain your citation list.
+      is safer. But note that sometimes the same article might be formatted differently in WoS! 
+    * replace the content of **my-citations.txt** to contain your citation list. In case no cited reference of an article lists any of the articles in **my-publications.txt** (which is an indication of a missing publication), a warning should be printed for each such article.
 
 - Open a command prompt window (click Start, then Run, and type **cmd**), and go to the directory containing the script. We
 assume input and output files are in the same directory as the script.
