@@ -4,7 +4,7 @@ This projects contains a Perl script that takes a text file from Web of Science 
 their references and marks citations to provided article list.
 
 More specifically,
-- it reads a file named **my-citations.txt** generated from Web of Science as described in Bilkent Provost Office's [related
+- it reads a file named **my-citations.txt** generated from Web of Science ("savedrec.txt" file described in Bilkent Provost Office's [related
 web page](http://w3.bilkent.edu.tr/bilkent/annual-faculty-survey/). This is a list of articles citing your publications.
 - it reads a file named **my-publications.txt** listing your publications for which citations are to be marked. These are essentially lines from **my-citations.txt** corresponding to your publications.
 - it outputs a rich text file named **my-citations-marked.rtf**, which is the same as **my-citations.txt** except
