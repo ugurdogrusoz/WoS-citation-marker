@@ -41,6 +41,7 @@
   # Read publication list into an array (make sure to list all varying listings of your publications!)
   while (<PUBS>) {
     chomp $_; # remove newline char
+    $_ =~ s/^\s+|\s+$//g; # remove any leading and trailing white space
     $pubLines[$lineNo] = $_;
     $lineNo++;
   }
