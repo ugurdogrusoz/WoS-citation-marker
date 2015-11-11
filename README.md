@@ -40,7 +40,7 @@ but it should work with any Perl version 5 or later.
       
       *Dogrusoz U, 2013, IEEE T VIS COMPUT GR, V19, DOI 10.1109/TVCG.2012.178*
       
-    * replace the content of **my-citations.txt** to contain your citation list. In case no cited reference of an article lists any of the articles in **my-publications.txt** (which is an indication of a missing publication), a warning (in red) should be printed for each such article.
+    * replace the content of **my-citations.txt** to contain your citation list (rename file "savedrec.txt"). In case no cited reference of an article lists any of the articles in **my-publications.txt** (which is an indication of a missing publication), a warning (in red) should be printed for each such article.
 
 - Open a command prompt window (click Start, then Run, and type **cmd**), and go to the directory containing the script. We
 assume input and output files are in the same directory as the script.
