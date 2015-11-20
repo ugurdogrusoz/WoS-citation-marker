@@ -6,7 +6,7 @@ their references and marks citations to provided article list.
 More specifically,
 - it reads a file named **my-citations.txt** generated from Web of Science (file "savedrec.txt") as described in Bilkent Provost Office's [related
 web page](http://w3.bilkent.edu.tr/bilkent/annual-faculty-survey/). This is a list of articles citing your publications.
-- it reads a file named **my-publications.txt** listing your publications for which citations are to be marked. These are essentially lines from **my-citations.txt** corresponding to your publications.
+- it reads a file named **my-publications.txt** listing your publications for which citations are to be marked. These are essentially citation lines from **my-citations.txt** corresponding to your publications.
 - it outputs a rich text file named **my-citations-marked.rtf**, which is the same as **my-citations.txt** except
     * lines/references that are your publications (i.e. your citations) are highlighted
     * lines/references that are not your publications are removed
@@ -36,7 +36,7 @@ but it should work with any Perl version 5 or later.
       
       *Dogrusoz U*
       
-      is safer. But note that sometimes the same article might be formatted differently in WoS! For the above article, another way it is listed might be
+      is safer. List each article only once unless the same article is formatted differently in WoS! For the above article, another way it is listed in Wos indeed is
       
       *Dogrusoz U, 2013, IEEE T VIS COMPUT GR, V19, DOI 10.1109/TVCG.2012.178*
       
