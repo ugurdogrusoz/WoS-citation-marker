@@ -42,7 +42,9 @@
   while (<PUBS>) {
     chomp $_; # remove newline char
     $_ =~ s/^\s+|\s+$//g; # remove any leading and trailing white space
-    $pubLines[$lineNo] = $_;
+    if (length($_) > 0) {
+      $pubLines[$lineNo] = $_;
+    }
     $lineNo++;
   }
   
